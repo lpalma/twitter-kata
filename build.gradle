@@ -25,6 +25,12 @@ jar {
     }
 }
 
+shadowJar {
+    baseName = 'twitter-kata'
+    classifier = null
+    version = null
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile "org.mockito:mockito-core:2.+"
