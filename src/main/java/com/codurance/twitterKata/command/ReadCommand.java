@@ -1,18 +1,19 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 
 public class ReadCommand implements Command {
-    private String user;
+    private User user;
     private CommandsService commandsService;
 
-    public ReadCommand(String user, CommandsService commandsService) {
+    public ReadCommand(User user, CommandsService commandsService) {
         this.user = user;
         this.commandsService = commandsService;
     }
 
     public void handle() {
-        commandsService.read(user);
+        commandsService.read(user.name());
     }
 
     @Override

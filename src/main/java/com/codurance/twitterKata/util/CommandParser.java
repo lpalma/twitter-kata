@@ -28,7 +28,7 @@ public class CommandParser {
         String user = user(fragments);
 
         if (fragments.length == 1) {
-            return new ReadCommand(user, commandsService);
+            return new ReadCommand(new User(user), commandsService);
         }
 
         if (command(fragments).equals(POST_COMMAND)) {

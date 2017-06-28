@@ -24,17 +24,17 @@ public class CommandParserShould {
     @Mock private Console console;
     @Mock private CommandsService commandsService;
     private CommandParser parser;
+    private User alice;
 
     @Before
     public void setUp() {
         parser = new CommandParser(console, commandsService);
+        alice = new User("alice");
     }
 
     @Test
     public void parsePostCommandsFromConsole() {
         given(console.readLine()).willReturn("alice -> hello world");
-
-        User alice = new User("alice");
 
         PostCommand postCommand = new PostCommand(alice, "hello world", commandsService);
 
@@ -45,7 +45,7 @@ public class CommandParserShould {
     public void parseReadCommandsFromConsole() {
         given(console.readLine()).willReturn("alice");
 
-        ReadCommand readCommand = new ReadCommand("alice", commandsService);
+        ReadCommand readCommand = new ReadCommand(alice, commandsService);
 
         assertThat(parser.parseNext(), equalTo(readCommand));
     }

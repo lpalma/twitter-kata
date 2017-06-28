@@ -1,7 +1,7 @@
 package com.codurance.twitterKata.command;
 
-import com.codurance.twitterKata.command.ReadCommand;
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -16,7 +16,8 @@ public class ReadCommandShould {
 
     @Test
     public void handleReadRequests() {
-        ReadCommand readCommand = new ReadCommand("alice", commandsService);
+        User alice = new User("alice");
+        ReadCommand readCommand = new ReadCommand(alice, commandsService);
 
         readCommand.handle();
 
