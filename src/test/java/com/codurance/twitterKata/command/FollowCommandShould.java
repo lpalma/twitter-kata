@@ -22,6 +22,6 @@ public class FollowCommandShould {
 
         followCommand.handle();
 
-        verify(commandsService).follow("alice", "bob");
+        verify(commandsService).follow(alice, bob);
     }
 }

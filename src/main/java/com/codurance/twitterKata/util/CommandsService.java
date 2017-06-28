@@ -37,8 +37,8 @@ public class CommandsService {
         return new Post(user.name(), clock.now(), text);
     }
 
-    public void follow(String follower, String following) {
-        followingsRepository.add(follower, following);
+    public void follow(User follower, User following) {
+        followingsRepository.add(follower.name(), following.name());
     }
 
     public void wall(String user) {

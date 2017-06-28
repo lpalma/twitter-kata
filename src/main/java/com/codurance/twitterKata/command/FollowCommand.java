@@ -15,7 +15,7 @@ public class FollowCommand implements Command {
     }
 
     public void handle() {
-        commandsService.follow(follower.name(), following.name());
+        commandsService.follow(follower, following);
     }
 
     @Override

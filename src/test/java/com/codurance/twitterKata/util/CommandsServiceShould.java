@@ -60,7 +60,10 @@ public class CommandsServiceShould {
 
     @Test
     public void letUserFollowOtherUser() {
-        commandsService.follow("alice", "bob");
+        User alice = new User("alice");
+        User bob = new User("bob");
+
+        commandsService.follow(alice, bob);
 
         verify(followingsRepository).add("alice", "bob");
     }

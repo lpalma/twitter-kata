@@ -40,7 +40,7 @@ public class CommandParser {
         }
 
         User following = new User(text(fragments));
-        
+
         return new FollowCommand(new User(user), following, commandsService);
     }
 
