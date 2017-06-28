@@ -26,15 +26,19 @@ public class CommandsServiceShould {
     @Mock private TimelinePrinter timelinePrinter;
     @Mock private FollowingsRepository followingsRepository;
     private CommandsService commandsService;
+    private User alice;
+    private User bob;
+    private User charlie;
 
     @Before
     public void setUp() {
         commandsService = new CommandsService(postRepository, followingsRepository, clock, timelinePrinter);
+        alice = new User("alice");
+        bob = new User("bob");
     }
 
     @Test
     public void acceptPostsFromUser() {
-        User alice = new User("alice");
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
         Post post = post("alice", date, "hello world");
 
@@ -49,9 +53,8 @@ public class CommandsServiceShould {
     public void displayPostsFromUser() {
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
         List<Post> posts = singletonList(post("alice", date, "hello world"));
-        User alice = new User("alice");
 
-        given(postRepository.byUser("alice")).willReturn(posts);
+        given(postRepository.byUser(alice)).willReturn(posts);
 
         commandsService.read(alice);
 
@@ -60,9 +63,6 @@ public class CommandsServiceShould {
 
     @Test
     public void letUserFollowOtherUser() {
-        User alice = new User("alice");
-        User bob = new User("bob");
-
         commandsService.follow(alice, bob);
 
         verify(followingsRepository).add("alice", "bob");
@@ -71,7 +71,7 @@ public class CommandsServiceShould {
     @Test
     public void displayUserWall() {
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
-        User alice = new User("alice");
+        charlie = new User("charlie");
 
         Post alicePost = post("alice", date, "hello world");
         Post charliePost = post("charlie", date, "I'm being followed!");
@@ -79,9 +79,9 @@ public class CommandsServiceShould {
 
         given(followingsRepository.getByFollower("alice")).willReturn(asList("charlie", "bob"));
 
-        given(postRepository.byUser("alice")).willReturn(singletonList(alicePost));
-        given(postRepository.byUser("charlie")).willReturn(singletonList(charliePost));
-        given(postRepository.byUser("bob")).willReturn(singletonList(bobPost));
+        given(postRepository.byUser(alice)).willReturn(singletonList(alicePost));
+        given(postRepository.byUser(charlie)).willReturn(singletonList(charliePost));
+        given(postRepository.byUser(bob)).willReturn(singletonList(bobPost));
 
         commandsService.wall(alice);
 

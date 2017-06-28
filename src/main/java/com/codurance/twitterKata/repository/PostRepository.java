@@ -20,9 +20,9 @@ public class PostRepository {
         return unmodifiableList(posts);
     }
 
-    public List<Post> byUser(String user) {
+    public List<Post> byUser(User user) {
         return posts.stream()
-                .filter(post -> post.user().equals(new User(user)))
+                .filter(post -> post.user().equals(user))
                 .collect(Collectors.toList());
     }
 }

@@ -28,7 +28,7 @@ public class CommandsService {
     }
 
     public void read(User user) {
-        List<Post> posts = postRepository.byUser(user.name());
+        List<Post> posts = postRepository.byUser(user);
 
         timelinePrinter.print(posts);
     }
@@ -52,10 +52,10 @@ public class CommandsService {
     private ArrayList<Post> mergeWallPosts(User user, List<String> followings) {
         ArrayList<Post> wallPosts = new ArrayList<>();
 
-        wallPosts.addAll(postRepository.byUser(user.name()));
+        wallPosts.addAll(postRepository.byUser(user));
 
         followings.stream()
-                .flatMap(following -> postRepository.byUser(following).stream())
+                .flatMap(following -> postRepository.byUser(new User(following)).stream())
                 .forEach(wallPosts::add);
 
         return wallPosts;

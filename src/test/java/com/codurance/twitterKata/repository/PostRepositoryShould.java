@@ -40,6 +40,6 @@ public class PostRepositoryShould {
 
         postRepository.add(post);
 
-        assertThat(postRepository.byUser("alice"), equalTo(singletonList(post)));
+        assertThat(postRepository.byUser(alice), equalTo(singletonList(post)));
     }
 }
