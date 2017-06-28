@@ -21,6 +21,6 @@ public class ReadCommandShould {
 
         readCommand.handle();
 
-        verify(commandsService).read("alice");
+        verify(commandsService).read(alice);
     }
 }

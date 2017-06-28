@@ -49,10 +49,11 @@ public class CommandsServiceShould {
     public void displayPostsFromUser() {
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
         List<Post> posts = singletonList(post("alice", date, "hello world"));
+        User alice = new User("alice");
 
         given(postRepository.byUser("alice")).willReturn(posts);
 
-        commandsService.read("alice");
+        commandsService.read(alice);
 
         verify(timelinePrinter).print(posts);
     }

@@ -27,8 +27,8 @@ public class CommandsService {
         postRepository.add(post);
     }
 
-    public void read(String user) {
-        List<Post> posts = postRepository.byUser(user);
+    public void read(User user) {
+        List<Post> posts = postRepository.byUser(user.name());
 
         timelinePrinter.print(posts);
     }

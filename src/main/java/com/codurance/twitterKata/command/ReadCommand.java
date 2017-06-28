@@ -13,7 +13,7 @@ public class ReadCommand implements Command {
     }
 
     public void handle() {
-        commandsService.read(user.name());
+        commandsService.read(user);
     }
 
     @Override
