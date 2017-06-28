@@ -28,15 +28,23 @@ public class TimelinePrinter {
     }
 
     private String formatMessage(Post post) {
-        return post.user().name()
+        return userName(post)
                 + " - "
-                + post.message()
+                + message(post)
                 + " ("
-                + formatTime(post.date())
+                + formatTime(post)
                 + ")";
     }
 
-    private String formatTime(LocalDateTime date) {
-        return timelineDateFormatter.format(date);
+    private String message(Post post) {
+        return post.message();
+    }
+
+    private String userName(Post post) {
+        return post.user().name();
+    }
+
+    private String formatTime(Post post) {
+        return timelineDateFormatter.format(post.date());
     }
 }
