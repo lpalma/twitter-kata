@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.repository;
 
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PostRepository {
 
     public List<Post> byUser(String user) {
         return posts.stream()
-                .filter(post -> post.user().equals(user))
+                .filter(post -> post.user().equals(new User(user)))
                 .collect(Collectors.toList());
     }
 }

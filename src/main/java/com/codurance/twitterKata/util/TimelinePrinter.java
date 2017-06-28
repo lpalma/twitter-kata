@@ -28,7 +28,7 @@ public class TimelinePrinter {
     }
 
     private String formatMessage(Post post) {
-        return post.user()
+        return post.user().name()
                 + " - "
                 + post.message()
                 + " ("

@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.repository;
 
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,15 +15,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PostRepositoryShould {
 
     private PostRepository postRepository;
+    private User alice;
 
     @Before
     public void setUp() {
         postRepository = new PostRepository();
+        alice = new User("alice");
     }
 
     @Test
     public void storePosts() {
-        Post post = new Post("alice", LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
+        Post post = new Post(alice, LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
 
         postRepository.add(post);
 
@@ -33,7 +36,7 @@ public class PostRepositoryShould {
 
     @Test
     public void retrievePostsByUser() {
-        Post post = new Post("alice", LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
+        Post post = new Post(alice, LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
 
         postRepository.add(post);
 

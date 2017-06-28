@@ -3,17 +3,17 @@ package com.codurance.twitterKata.valueObject;
 import java.time.LocalDateTime;
 
 public class Post {
-    private String userName;
+    private User userName;
     private LocalDateTime date;
     private String message;
 
-    public Post(String userName, LocalDateTime date, String message) {
-        this.userName = userName;
+    public Post(User user, LocalDateTime date, String message) {
+        this.userName = user;
         this.date = date;
         this.message = message;
     }
 
-    public String user() {
+    public User user() {
         return userName;
     }
 
