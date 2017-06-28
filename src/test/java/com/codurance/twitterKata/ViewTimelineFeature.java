@@ -66,9 +66,11 @@ public class ViewTimelineFeature {
                 now().minusMinutes(1),
                 now());
 
-        commandsService.post("alice", "I love the weather today");
-        commandsService.post("alice", "Damn! We lost!");
-        commandsService.post("alice", "Good game though.");
+        User alice = new User("alice");
+
+        commandsService.post(alice, "I love the weather today");
+        commandsService.post(alice, "Damn! We lost!");
+        commandsService.post(alice, "Good game though.");
 
         given(console.readLine()).willReturn("alice");
 
@@ -93,10 +95,14 @@ public class ViewTimelineFeature {
                 now().minusSeconds(2),
                 now());
 
-        commandsService.post("alice", "I love the weather today");
-        commandsService.post("bob", "Damn! We lost!");
-        commandsService.post("alice", "Good game though.");
-        commandsService.post("charlie", "Anyone want to have a coffee?");
+        User alice = new User("alice");
+        User bob = new User("bob");
+        User charlie = new User("charlie");
+
+        commandsService.post(alice, "I love the weather today");
+        commandsService.post(bob, "Damn! We lost!");
+        commandsService.post(alice, "Good game though.");
+        commandsService.post(charlie, "Anyone want to have a coffee?");
 
         given(console.readLine()).willReturn(
                 "charlie follows alice",
