@@ -14,7 +14,7 @@ public class WallCommand implements Command {
 
     @Override
     public void handle() {
-        commandsService.wall(user.name());
+        commandsService.wall(user);
     }
 
     @Override

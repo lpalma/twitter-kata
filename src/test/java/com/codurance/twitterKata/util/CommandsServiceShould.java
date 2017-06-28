@@ -71,6 +71,7 @@ public class CommandsServiceShould {
     @Test
     public void displayUserWall() {
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
+        User alice = new User("alice");
 
         Post alicePost = post("alice", date, "hello world");
         Post charliePost = post("charlie", date, "I'm being followed!");
@@ -82,7 +83,7 @@ public class CommandsServiceShould {
         given(postRepository.byUser("charlie")).willReturn(singletonList(charliePost));
         given(postRepository.byUser("bob")).willReturn(singletonList(bobPost));
 
-        commandsService.wall("alice");
+        commandsService.wall(alice);
 
         verify(timelinePrinter).print(asList(alicePost, charliePost, bobPost));
     }

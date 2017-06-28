@@ -20,6 +20,6 @@ public class WallCommandShould {
 
         wallCommand.handle();
 
-        verify(commandsService).wall("alice");
+        verify(commandsService).wall(alice);
     }
 }

@@ -41,18 +41,18 @@ public class CommandsService {
         followingsRepository.add(follower.name(), following.name());
     }
 
-    public void wall(String user) {
-        List<String> followings = followingsRepository.getByFollower(user);
+    public void wall(User user) {
+        List<String> followings = followingsRepository.getByFollower(user.name());
 
         ArrayList<Post> wallPosts = mergeWallPosts(user, followings);
 
         timelinePrinter.print(wallPosts);
     }
 
-    private ArrayList<Post> mergeWallPosts(String user, List<String> followings) {
+    private ArrayList<Post> mergeWallPosts(User user, List<String> followings) {
         ArrayList<Post> wallPosts = new ArrayList<>();
 
-        wallPosts.addAll(postRepository.byUser(user));
+        wallPosts.addAll(postRepository.byUser(user.name()));
 
         followings.stream()
                 .flatMap(following -> postRepository.byUser(following).stream())
