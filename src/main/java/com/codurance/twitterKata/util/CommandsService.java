@@ -42,7 +42,7 @@ public class CommandsService {
     }
 
     public void wall(User user) {
-        List<String> followings = followingsRepository.getByFollower(user.name());
+        List<String> followings = followingsRepository.getByFollower(user);
 
         ArrayList<Post> wallPosts = mergeWallPosts(user, followings);
 

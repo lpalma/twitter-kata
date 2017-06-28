@@ -40,7 +40,7 @@ public class FollowingsRepositoryShould {
         followingsRepository.add(alice, bob);
         followingsRepository.add(alice, charlie);
 
-        List<String> followings = followingsRepository.getByFollower("alice");
+        List<String> followings = followingsRepository.getByFollower(alice);
 
         assertThat(followings, equalTo(asList("bob", "charlie")));
     }
