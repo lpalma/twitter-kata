@@ -1,19 +1,19 @@
 package com.codurance.twitterKata.valueObject;
 
 public class Following {
-    private String follower;
-    private String following;
+    private User follower;
+    private User following;
 
-    public Following(String follower, String following) {
+    public Following(User follower, User following) {
         this.follower = follower;
         this.following = following;
     }
 
-    public Boolean hasFollower(String user) {
+    public Boolean hasFollower(User user) {
         return user.equals(follower);
     }
 
-    public String following() {
+    public User following() {
         return following;
     }
 }

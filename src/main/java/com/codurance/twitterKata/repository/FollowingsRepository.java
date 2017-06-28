@@ -13,7 +13,7 @@ public class FollowingsRepository {
     private List<Following> followings = new ArrayList<>();
 
     public void add(User follower, User following) {
-        followings.add(new Following(follower.name(), following.name()));
+        followings.add(new Following(follower, following));
     }
 
     public List<Following> getAll() {
