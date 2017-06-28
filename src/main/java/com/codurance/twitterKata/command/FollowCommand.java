@@ -1,20 +1,21 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 
 public class FollowCommand implements Command {
-    private String follower;
-    private String following;
+    private User follower;
+    private User following;
     private CommandsService commandsService;
 
-    public FollowCommand(String follower, String following, CommandsService commandsService) {
+    public FollowCommand(User follower, User following, CommandsService commandsService) {
         this.follower = follower;
         this.following = following;
         this.commandsService = commandsService;
     }
 
     public void handle() {
-        commandsService.follow(follower, following);
+        commandsService.follow(follower.name(), following.name());
     }
 
     @Override

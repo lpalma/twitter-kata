@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -14,7 +15,10 @@ public class FollowCommandShould {
 
     @Test
     public void handleFollowRequest() {
-        FollowCommand followCommand = new FollowCommand("alice", "bob", commandsService);
+        User alice = new User("alice");
+        User bob = new User("bob");
+
+        FollowCommand followCommand = new FollowCommand(alice, bob, commandsService);
 
         followCommand.handle();
 

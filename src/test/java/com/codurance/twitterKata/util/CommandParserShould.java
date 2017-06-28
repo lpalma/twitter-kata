@@ -54,7 +54,10 @@ public class CommandParserShould {
     public void parseFollowCommandFromConsole() {
         given(console.readLine()).willReturn("alice follows bob");
 
-        FollowCommand followCommand = new FollowCommand("alice", "bob", commandsService);
+        User alice = new User("alice");
+        User bob = new User("bob");
+
+        FollowCommand followCommand = new FollowCommand(alice, bob, commandsService);
 
         assertThat(parser.parseNext(), equalTo(followCommand));
     }

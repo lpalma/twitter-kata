@@ -39,7 +39,9 @@ public class CommandParser {
             return new WallCommand(user, commandsService);
         }
 
-        return new FollowCommand(user, text(fragments), commandsService);
+        User following = new User(text(fragments));
+        
+        return new FollowCommand(new User(user), following, commandsService);
     }
 
     private String command(String[] fragments) {
