@@ -3,6 +3,7 @@ package com.codurance.twitterKata.util;
 import com.codurance.twitterKata.valueObject.Post;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,12 +34,13 @@ public class CommandsServiceShould {
 
     @Test
     public void acceptPostsFromUser() {
+        User alice = new User("alice");
         LocalDateTime date = LocalDateTime.of(2017, 6, 1, 0,0,0);
         Post post = post("alice", date, "hello world");
 
         given(clock.now()).willReturn(date);
 
-        commandsService.post("alice", "hello world");
+        commandsService.post(alice, "hello world");
 
         verify(postRepository).add(post);
     }

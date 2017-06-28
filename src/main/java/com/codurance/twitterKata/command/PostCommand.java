@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 
 public class PostCommand implements Command {
     private String user;
@@ -14,7 +15,7 @@ public class PostCommand implements Command {
     }
 
     public void handle() {
-        commandsService.post(user, text);
+        commandsService.post(new User(user), text);
     }
 
     @Override

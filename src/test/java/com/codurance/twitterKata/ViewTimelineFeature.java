@@ -4,6 +4,7 @@ import com.codurance.twitterKata.util.*;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
