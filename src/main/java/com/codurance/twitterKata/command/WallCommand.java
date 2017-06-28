@@ -1,19 +1,20 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 
 public class WallCommand implements Command {
-    private String user;
+    private User user;
     private CommandsService commandsService;
 
-    public WallCommand(String user, CommandsService commandsService) {
+    public WallCommand(User user, CommandsService commandsService) {
         this.user = user;
         this.commandsService = commandsService;
     }
 
     @Override
     public void handle() {
-        commandsService.wall(user);
+        commandsService.wall(user.name());
     }
 
     @Override

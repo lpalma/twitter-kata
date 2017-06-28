@@ -66,7 +66,9 @@ public class CommandParserShould {
     public void parseWallCommandFromConsole() {
         given(console.readLine()).willReturn("alice wall");
 
-        WallCommand wallCommand = new WallCommand("alice", commandsService);
+        User alice = new User("alice");
+
+        WallCommand wallCommand = new WallCommand(alice, commandsService);
 
         assertThat(parser.parseNext(), equalTo(wallCommand));
     }

@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -14,7 +15,8 @@ public class WallCommandShould {
 
     @Test
     public void handleWallRequestsFromConsole() {
-        WallCommand wallCommand = new WallCommand("alice", commandsService);
+        User alice = new User("alice");
+        WallCommand wallCommand = new WallCommand(alice, commandsService);
 
         wallCommand.handle();
 

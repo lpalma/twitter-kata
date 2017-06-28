@@ -25,14 +25,14 @@ public class CommandParser {
     }
 
     private Command buildCommand(String... fragments) {
-        String user = user(fragments);
+        User user = user(fragments);
 
         if (fragments.length == 1) {
-            return new ReadCommand(new User(user), commandsService);
+            return new ReadCommand(user, commandsService);
         }
 
         if (command(fragments).equals(POST_COMMAND)) {
-            return new PostCommand(new User(user), text(fragments), commandsService);
+            return new PostCommand(user, text(fragments), commandsService);
         }
 
         if (command(fragments).equals(WALL_COMMAND)) {
@@ -41,7 +41,7 @@ public class CommandParser {
 
         User following = new User(text(fragments));
 
-        return new FollowCommand(new User(user), following, commandsService);
+        return new FollowCommand(user, following, commandsService);
     }
 
     private String command(String[] fragments) {
@@ -54,7 +54,7 @@ public class CommandParser {
         return String.join(" ", textFragments);
     }
 
-    private String user(String[] fragments) {
-        return fragments[0];
+    private User user(String[] fragments) {
+        return new User(fragments[0]);
     }
 }
