@@ -7,6 +7,7 @@ import com.codurance.twitterKata.command.WallCommand;
 import com.codurance.twitterKata.util.CommandParser;
 import com.codurance.twitterKata.util.CommandsService;
 import com.codurance.twitterKata.util.Console;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +34,9 @@ public class CommandParserShould {
     public void parsePostCommandsFromConsole() {
         given(console.readLine()).willReturn("alice -> hello world");
 
-        PostCommand postCommand = new PostCommand("alice", "hello world", commandsService);
+        User alice = new User("alice");
+
+        PostCommand postCommand = new PostCommand(alice, "hello world", commandsService);
 
         assertThat(parser.parseNext(), equalTo(postCommand));
     }

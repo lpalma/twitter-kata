@@ -4,18 +4,18 @@ import com.codurance.twitterKata.util.CommandsService;
 import com.codurance.twitterKata.valueObject.User;
 
 public class PostCommand implements Command {
-    private String user;
+    private User user;
     private String text;
     private CommandsService commandsService;
 
-    public PostCommand(String user, String text, CommandsService commandsService) {
+    public PostCommand(User user, String text, CommandsService commandsService) {
         this.user = user;
         this.text = text;
         this.commandsService = commandsService;
     }
 
     public void handle() {
-        commandsService.post(new User(user), text);
+        commandsService.post(user, text);
     }
 
     @Override

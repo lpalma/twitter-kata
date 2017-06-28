@@ -16,7 +16,7 @@ public class PostCommandShould {
     @Test
     public void handlePostRequests() {
         User alice = new User("alice");
-        PostCommand postCommand = new PostCommand("alice", "hello world", commandsService);
+        PostCommand postCommand = new PostCommand(alice, "hello world", commandsService);
 
         postCommand.handle();
 

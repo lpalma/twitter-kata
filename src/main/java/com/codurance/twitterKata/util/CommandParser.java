@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.util;
 
 import com.codurance.twitterKata.command.*;
+import com.codurance.twitterKata.valueObject.User;
 
 import static java.util.Arrays.copyOfRange;
 
@@ -31,7 +32,7 @@ public class CommandParser {
         }
 
         if (command(fragments).equals(POST_COMMAND)) {
-            return new PostCommand(user, text(fragments), commandsService);
+            return new PostCommand(new User(user), text(fragments), commandsService);
         }
 
         if (command(fragments).equals(WALL_COMMAND)) {
