@@ -1,4 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.repository;
+
+import com.codurance.twitterKata.valueObject.Following;
 
 import java.util.ArrayList;
 import java.util.List;

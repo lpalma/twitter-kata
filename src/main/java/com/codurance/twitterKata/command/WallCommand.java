@@ -1,18 +1,19 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.command;
 
-public class PostCommand implements Command {
+import com.codurance.twitterKata.util.CommandsService;
+
+public class WallCommand implements Command {
     private String user;
-    private String text;
     private CommandsService commandsService;
 
-    public PostCommand(String user, String text, CommandsService commandsService) {
+    public WallCommand(String user, CommandsService commandsService) {
         this.user = user;
-        this.text = text;
         this.commandsService = commandsService;
     }
 
+    @Override
     public void handle() {
-        commandsService.post(user, text);
+        commandsService.wall(user);
     }
 
     @Override
@@ -20,16 +21,16 @@ public class PostCommand implements Command {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PostCommand that = (PostCommand) o;
+        WallCommand that = (WallCommand) o;
 
         if (!user.equals(that.user)) return false;
-        return text.equals(that.text);
+        return commandsService.equals(that.commandsService);
     }
 
     @Override
     public int hashCode() {
         int result = user.hashCode();
-        result = 31 * result + text.hashCode();
+        result = 31 * result + commandsService.hashCode();
         return result;
     }
 }

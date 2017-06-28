@@ -1,4 +1,8 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
+
+import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.repository.FollowingsRepository;
+import com.codurance.twitterKata.repository.PostRepository;
 
 import java.util.ArrayList;
 import java.util.List;

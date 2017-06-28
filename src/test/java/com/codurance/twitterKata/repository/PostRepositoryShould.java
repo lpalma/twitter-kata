@@ -1,5 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.repository;
 
+import com.codurance.twitterKata.valueObject.Post;
 import org.junit.Before;
 import org.junit.Test;
 

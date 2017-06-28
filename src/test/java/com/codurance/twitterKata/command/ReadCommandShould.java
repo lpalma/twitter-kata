@@ -1,5 +1,7 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.command;
 
+import com.codurance.twitterKata.command.ReadCommand;
+import com.codurance.twitterKata.util.CommandsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

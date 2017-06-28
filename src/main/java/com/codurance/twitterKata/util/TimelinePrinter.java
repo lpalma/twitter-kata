@@ -1,4 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
+
+import com.codurance.twitterKata.valueObject.Post;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;

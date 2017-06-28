@@ -1,5 +1,9 @@
 package com.codurance.twitterKata;
 
+import com.codurance.twitterKata.util.*;
+import com.codurance.twitterKata.repository.FollowingsRepository;
+import com.codurance.twitterKata.repository.PostRepository;
+
 public class Main {
 
     private static Console console = new Console();

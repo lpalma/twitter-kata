@@ -1,4 +1,4 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.valueObject;
 
 public class Following {
     private String follower;

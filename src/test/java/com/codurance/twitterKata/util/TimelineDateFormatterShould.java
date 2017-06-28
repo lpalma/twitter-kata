@@ -1,4 +1,4 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
 
 import org.junit.Before;
 import org.junit.Test;

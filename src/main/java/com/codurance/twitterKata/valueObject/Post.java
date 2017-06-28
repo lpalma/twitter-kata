@@ -1,4 +1,4 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.valueObject;
 
 import java.time.LocalDateTime;
 

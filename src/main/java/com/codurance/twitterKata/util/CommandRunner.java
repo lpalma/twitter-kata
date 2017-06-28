@@ -1,4 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
+
+import com.codurance.twitterKata.command.Command;
 
 public class CommandRunner {
     private CommandParser commandParser;

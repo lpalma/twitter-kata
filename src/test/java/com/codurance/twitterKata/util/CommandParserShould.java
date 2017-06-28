@@ -1,5 +1,12 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
 
+import com.codurance.twitterKata.command.FollowCommand;
+import com.codurance.twitterKata.command.PostCommand;
+import com.codurance.twitterKata.command.ReadCommand;
+import com.codurance.twitterKata.command.WallCommand;
+import com.codurance.twitterKata.util.CommandParser;
+import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.util.Console;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

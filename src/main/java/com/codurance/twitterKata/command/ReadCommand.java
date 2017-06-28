@@ -1,4 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.command;
+
+import com.codurance.twitterKata.util.CommandsService;
 
 public class ReadCommand implements Command {
     private String user;

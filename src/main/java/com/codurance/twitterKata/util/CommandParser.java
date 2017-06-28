@@ -1,4 +1,6 @@
-package com.codurance.twitterKata;
+package com.codurance.twitterKata.util;
+
+import com.codurance.twitterKata.command.*;
 
 import static java.util.Arrays.copyOfRange;
 
