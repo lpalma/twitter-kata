@@ -20,14 +20,14 @@ public class FollowingsRepository {
         return unmodifiableList(followings);
     }
 
-    public List<String> getByFollower(User user) {
+    public List<User> getByFollower(User user) {
         return followings.stream()
                 .filter(following -> following.hasFollower(user))
-                .map(this::followingName)
+                .map(this::following)
                 .collect(Collectors.toList());
     }
 
-    private String followingName(Following following) {
-        return following.following().name();
+    private User following(Following following) {
+        return following.following();
     }
 }

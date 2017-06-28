@@ -77,7 +77,7 @@ public class CommandsServiceShould {
         Post charliePost = post("charlie", date, "I'm being followed!");
         Post bobPost = post("bob", date, "I like Terminator 2");
 
-        given(followingsRepository.getByFollower(alice)).willReturn(asList("charlie", "bob"));
+        given(followingsRepository.getByFollower(alice)).willReturn(asList(charlie, bob));
 
         given(postRepository.byUser(alice)).willReturn(singletonList(alicePost));
         given(postRepository.byUser(charlie)).willReturn(singletonList(charliePost));
