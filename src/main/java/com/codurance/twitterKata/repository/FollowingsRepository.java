@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.repository;
 
 import com.codurance.twitterKata.valueObject.Following;
+import com.codurance.twitterKata.valueObject.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,8 @@ import static java.util.Collections.unmodifiableList;
 public class FollowingsRepository {
     private List<Following> followings = new ArrayList<>();
 
-    public void add(String follower, String following) {
-        followings.add(new Following(follower, following));
+    public void add(User follower, User following) {
+        followings.add(new Following(follower.name(), following.name()));
     }
 
     public List<Following> getAll() {

@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.repository;
 
 import com.codurance.twitterKata.valueObject.Following;
+import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,15 +14,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class FollowingsRepositoryShould {
 
     private FollowingsRepository followingsRepository;
+    private User alice;
+    private User bob;
 
     @Before
     public void setUp() {
         followingsRepository = new FollowingsRepository();
+        alice = new User("alice");
+        bob = new User("bob");
     }
 
     @Test
     public void addFollowingsRelationship() {
-        followingsRepository.add("alice", "bob");
+        followingsRepository.add(alice, bob);
 
         List<Following> followings = followingsRepository.getAll();
 
@@ -30,8 +35,10 @@ public class FollowingsRepositoryShould {
 
     @Test
     public void fetchUsersByFollower() {
-        followingsRepository.add("alice", "bob");
-        followingsRepository.add("alice", "charlie");
+        User charlie = new User("charlie");
+
+        followingsRepository.add(alice, bob);
+        followingsRepository.add(alice, charlie);
 
         List<String> followings = followingsRepository.getByFollower("alice");
 

@@ -38,7 +38,7 @@ public class CommandsService {
     }
 
     public void follow(User follower, User following) {
-        followingsRepository.add(follower.name(), following.name());
+        followingsRepository.add(follower, following);
     }
 
     public void wall(User user) {
