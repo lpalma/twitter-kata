@@ -3,6 +3,7 @@ package com.codurance.twitterKata;
 import com.codurance.twitterKata.util.*;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
+import com.codurance.twitterKata.valueObject.InputLine;
 import com.codurance.twitterKata.valueObject.Post;
 import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
@@ -49,8 +50,8 @@ public class ViewTimelineFeature {
     @Test
     public void userCanPostNewMessage() {
         given(console.readLine()).willReturn(
-                "alice -> hello world",
-                "bob -> my first post");
+                inputLine("alice -> hello world"),
+                inputLine("bob -> my first post"));
 
         commandRunner.next();
         commandRunner.next();
@@ -74,7 +75,7 @@ public class ViewTimelineFeature {
         commandsService.post(alice, postMessage("Damn! We lost!"));
         commandsService.post(alice, postMessage("Good game though."));
 
-        given(console.readLine()).willReturn("alice");
+        given(console.readLine()).willReturn(inputLine("alice"));
 
         commandRunner.next();
 
@@ -107,9 +108,9 @@ public class ViewTimelineFeature {
         commandsService.post(charlie, postMessage("Anyone want to have a coffee?"));
 
         given(console.readLine()).willReturn(
-                "charlie follows alice",
-                "charlie follows bob",
-                "charlie wall");
+                inputLine("charlie follows alice"),
+                inputLine("charlie follows bob"),
+                inputLine("charlie wall"));
 
         commandRunner.next();
         commandRunner.next();
@@ -120,6 +121,10 @@ public class ViewTimelineFeature {
         inOrder.verify(console).printLine("alice - Good game though. (1 minute ago)");
         inOrder.verify(console).printLine("bob - Damn! We lost! (2 minutes ago)");
         inOrder.verify(console).printLine("alice - I love the weather today (5 hours ago)");
+    }
+
+    private InputLine inputLine(String line) {
+        return new InputLine(line);
     }
 
     private PostMessage postMessage(String message) {

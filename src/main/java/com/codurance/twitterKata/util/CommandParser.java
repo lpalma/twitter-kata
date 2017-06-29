@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.util;
 
 import com.codurance.twitterKata.command.*;
+import com.codurance.twitterKata.valueObject.InputLine;
 import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 
@@ -18,11 +19,16 @@ public class CommandParser {
     }
 
     public Command parseNext() {
-        String line = console.readLine();
+        InputLine line = console.readLine();
 
-        String[] fragments = line.split("\\s+");
+        String[] fragments = splitInput(line);
 
         return buildCommand(fragments);
+    }
+
+    private String[] splitInput(InputLine line) {
+        return line.input()
+                .split("\\s+");
     }
 
     private Command buildCommand(String... fragments) {

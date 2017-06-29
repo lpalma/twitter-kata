@@ -7,6 +7,7 @@ import com.codurance.twitterKata.command.WallCommand;
 import com.codurance.twitterKata.util.CommandParser;
 import com.codurance.twitterKata.util.CommandsService;
 import com.codurance.twitterKata.util.Console;
+import com.codurance.twitterKata.valueObject.InputLine;
 import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
@@ -35,10 +36,12 @@ public class CommandParserShould {
 
     @Test
     public void parsePostCommandsFromConsole() {
-        given(console.readLine()).willReturn("alice -> hello world");
+        InputLine inputLine = new InputLine("alice -> hello world");
+
+        given(console.readLine()).willReturn(inputLine);
 
         PostMessage aliceMessage = new PostMessage("hello world");
-        
+
         PostCommand postCommand = new PostCommand(alice, aliceMessage, commandsService);
 
         assertThat(parser.parseNext(), equalTo(postCommand));
@@ -46,7 +49,9 @@ public class CommandParserShould {
 
     @Test
     public void parseReadCommandsFromConsole() {
-        given(console.readLine()).willReturn("alice");
+        InputLine input = new InputLine("alice");
+
+        given(console.readLine()).willReturn(input);
 
         ReadCommand readCommand = new ReadCommand(alice, commandsService);
 
@@ -55,7 +60,9 @@ public class CommandParserShould {
 
     @Test
     public void parseFollowCommandFromConsole() {
-        given(console.readLine()).willReturn("alice follows bob");
+        InputLine input = new InputLine("alice follows bob");
+
+        given(console.readLine()).willReturn(input);
 
         User alice = new User("alice");
         User bob = new User("bob");
@@ -67,7 +74,9 @@ public class CommandParserShould {
 
     @Test
     public void parseWallCommandFromConsole() {
-        given(console.readLine()).willReturn("alice wall");
+        InputLine input = new InputLine("alice wall");
+
+        given(console.readLine()).willReturn(input);
 
         User alice = new User("alice");
 
