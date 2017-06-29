@@ -1,5 +1,6 @@
 package com.codurance.twitterKata.util;
 
+import com.codurance.twitterKata.valueObject.OutputLine;
 import com.codurance.twitterKata.valueObject.Post;
 
 import java.time.LocalDateTime;
@@ -21,10 +22,14 @@ public class TimelinePrinter {
     public void print(List<Post> posts) {
         posts.stream()
                 .sorted(Comparator.comparing(Post::date))
-                .map(this::formatMessage)
+                .map(this::toOutputLine)
                 .collect(Collectors.toCollection(LinkedList::new))
                 .descendingIterator()
                 .forEachRemaining(post -> console.printLine(post));
+    }
+
+    private OutputLine toOutputLine(Post post) {
+        return new OutputLine(formatMessage(post));
     }
 
     private String formatMessage(Post post) {

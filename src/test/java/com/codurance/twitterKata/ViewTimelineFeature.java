@@ -3,10 +3,7 @@ package com.codurance.twitterKata;
 import com.codurance.twitterKata.util.*;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
-import com.codurance.twitterKata.valueObject.InputLine;
-import com.codurance.twitterKata.valueObject.Post;
-import com.codurance.twitterKata.valueObject.PostMessage;
-import com.codurance.twitterKata.valueObject.User;
+import com.codurance.twitterKata.valueObject.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,9 +77,9 @@ public class ViewTimelineFeature {
         commandRunner.next();
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).printLine("alice - Good game though. (1 minute ago)");
-        inOrder.verify(console).printLine("alice - Damn! We lost! (2 minutes ago)");
-        inOrder.verify(console).printLine("alice - I love the weather today (5 minutes ago)");
+        inOrder.verify(console).printLine(outputLine("alice - Good game though. (1 minute ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - Damn! We lost! (2 minutes ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - I love the weather today (5 minutes ago)"));
     }
 
     private LocalDateTime now() {
@@ -117,14 +114,18 @@ public class ViewTimelineFeature {
         commandRunner.next();
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).printLine("charlie - Anyone want to have a coffee? (2 seconds ago)");
-        inOrder.verify(console).printLine("alice - Good game though. (1 minute ago)");
-        inOrder.verify(console).printLine("bob - Damn! We lost! (2 minutes ago)");
-        inOrder.verify(console).printLine("alice - I love the weather today (5 hours ago)");
+        inOrder.verify(console).printLine(outputLine("charlie - Anyone want to have a coffee? (2 seconds ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - Good game though. (1 minute ago)"));
+        inOrder.verify(console).printLine(outputLine("bob - Damn! We lost! (2 minutes ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - I love the weather today (5 hours ago)"));
     }
 
     private InputLine inputLine(String line) {
         return new InputLine(line);
+    }
+
+    private OutputLine outputLine(String line) {
+        return new OutputLine(line);
     }
 
     private PostMessage postMessage(String message) {

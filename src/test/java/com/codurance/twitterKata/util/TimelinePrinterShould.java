@@ -1,5 +1,6 @@
 package com.codurance.twitterKata.util;
 
+import com.codurance.twitterKata.valueObject.OutputLine;
 import com.codurance.twitterKata.valueObject.Post;
 import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
@@ -45,9 +46,13 @@ public class TimelinePrinterShould {
         timelinePrinter.print(posts);
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).printLine("alice - third post (1 minute ago)");
-        inOrder.verify(console).printLine("alice - second post (5 minutes ago)");
-        inOrder.verify(console).printLine("alice - first post (1 day ago)");
+        inOrder.verify(console).printLine(outputLine("alice - third post (1 minute ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - second post (5 minutes ago)"));
+        inOrder.verify(console).printLine(outputLine("alice - first post (1 day ago)"));
+    }
+
+    private OutputLine outputLine(String line) {
+        return new OutputLine(line);
     }
 
     private Post post(String user, LocalDateTime date, String text) {

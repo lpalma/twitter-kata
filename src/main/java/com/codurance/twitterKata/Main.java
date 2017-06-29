@@ -3,6 +3,7 @@ package com.codurance.twitterKata;
 import com.codurance.twitterKata.util.*;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
+import com.codurance.twitterKata.valueObject.OutputLine;
 
 public class Main {
 
@@ -19,10 +20,14 @@ public class Main {
         CommandParser commandParser = new CommandParser(console, commandsService);
         CommandRunner commandRunner = new CommandRunner(commandParser);
 
-        console.printLine("Welcome to Twitter Kata.");
+        printWelcomeMessage();
 
         while(true) {
             commandRunner.next();
         }
+    }
+
+    private static void printWelcomeMessage() {
+        console.printLine(new OutputLine("Welcome to Twitter Kata."));
     }
 }

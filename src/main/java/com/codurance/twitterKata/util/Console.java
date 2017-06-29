@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.util;
 
 import com.codurance.twitterKata.valueObject.InputLine;
+import com.codurance.twitterKata.valueObject.OutputLine;
 
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class Console {
         InputLine inputLine = new InputLine(nextLine);
 
         if (inputLine.input().equals("exit")) {
-            printLine("Bye!");
+            printLine(new OutputLine("Bye!"));
 
             System.exit(0);
         }
@@ -21,8 +22,8 @@ public class Console {
         return inputLine;
     }
 
-    public void printLine(String line) {
+    public void printLine(OutputLine outputLine) {
 
-        System.out.println(line);
+        System.out.println(outputLine.output());
     }
 }
