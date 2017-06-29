@@ -6,17 +6,17 @@ import com.codurance.twitterKata.valueObject.User;
 
 public class PostCommand implements Command {
     private User user;
-    private String text;
+    private PostMessage postMessage;
     private CommandsService commandsService;
 
-    public PostCommand(User user, String text, CommandsService commandsService) {
+    public PostCommand(User user, PostMessage postMessage, CommandsService commandsService) {
         this.user = user;
-        this.text = text;
+        this.postMessage = postMessage;
         this.commandsService = commandsService;
     }
 
     public void handle() {
-        commandsService.post(user, new PostMessage(text));
+        commandsService.post(user, postMessage);
     }
 
     @Override
@@ -27,13 +27,13 @@ public class PostCommand implements Command {
         PostCommand that = (PostCommand) o;
 
         if (!user.equals(that.user)) return false;
-        return text.equals(that.text);
+        return postMessage.equals(that.postMessage);
     }
 
     @Override
     public int hashCode() {
         int result = user.hashCode();
-        result = 31 * result + text.hashCode();
+        result = 31 * result + postMessage.hashCode();
         return result;
     }
 }

@@ -18,7 +18,7 @@ public class PostCommandShould {
     public void handlePostRequests() {
         User alice = new User("alice");
         PostMessage aliceMessage = new PostMessage("hello world");
-        PostCommand postCommand = new PostCommand(alice, "hello world", commandsService);
+        PostCommand postCommand = new PostCommand(alice, aliceMessage, commandsService);
 
         postCommand.handle();
 
