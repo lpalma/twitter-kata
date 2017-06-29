@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.command;
 
 import com.codurance.twitterKata.util.CommandsService;
+import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +17,11 @@ public class PostCommandShould {
     @Test
     public void handlePostRequests() {
         User alice = new User("alice");
+        PostMessage aliceMessage = new PostMessage("hello world");
         PostCommand postCommand = new PostCommand(alice, "hello world", commandsService);
 
         postCommand.handle();
 
-        verify(commandsService).post(alice, "hello world");
+        verify(commandsService).post(alice, aliceMessage);
     }
 }

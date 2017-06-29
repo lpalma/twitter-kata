@@ -4,6 +4,7 @@ import com.codurance.twitterKata.util.*;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -69,9 +70,9 @@ public class ViewTimelineFeature {
 
         User alice = new User("alice");
 
-        commandsService.post(alice, "I love the weather today");
-        commandsService.post(alice, "Damn! We lost!");
-        commandsService.post(alice, "Good game though.");
+        commandsService.post(alice, new PostMessage("I love the weather today"));
+        commandsService.post(alice, new PostMessage("Damn! We lost!"));
+        commandsService.post(alice, new PostMessage("Good game though."));
 
         given(console.readLine()).willReturn("alice");
 
@@ -100,10 +101,10 @@ public class ViewTimelineFeature {
         User bob = new User("bob");
         User charlie = new User("charlie");
 
-        commandsService.post(alice, "I love the weather today");
-        commandsService.post(bob, "Damn! We lost!");
-        commandsService.post(alice, "Good game though.");
-        commandsService.post(charlie, "Anyone want to have a coffee?");
+        commandsService.post(alice, new PostMessage("I love the weather today"));
+        commandsService.post(bob, new PostMessage("Damn! We lost!"));
+        commandsService.post(alice, new PostMessage("Good game though."));
+        commandsService.post(charlie, new PostMessage("Anyone want to have a coffee?"));
 
         given(console.readLine()).willReturn(
                 "charlie follows alice",

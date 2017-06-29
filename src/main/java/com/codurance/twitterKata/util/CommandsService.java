@@ -3,6 +3,7 @@ package com.codurance.twitterKata.util;
 import com.codurance.twitterKata.valueObject.Post;
 import com.codurance.twitterKata.repository.FollowingsRepository;
 import com.codurance.twitterKata.repository.PostRepository;
+import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class CommandsService {
         this.timelinePrinter = timelinePrinter;
     }
 
-    public void post(User user, String text) {
-        Post post = createPost(user, text);
+    public void post(User user, PostMessage postMessage) {
+        Post post = createPost(user, postMessage);
 
         postRepository.add(post);
     }
@@ -33,8 +34,8 @@ public class CommandsService {
         timelinePrinter.print(posts);
     }
 
-    private Post createPost(User user, String text) {
-        return new Post(user, clock.now(), text);
+    private Post createPost(User user, PostMessage postMessage) {
+        return new Post(user, clock.now(), postMessage.message());
     }
 
     public void follow(User follower, User following) {
