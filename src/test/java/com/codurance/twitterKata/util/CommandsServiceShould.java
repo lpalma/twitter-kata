@@ -91,6 +91,6 @@ public class CommandsServiceShould {
     }
 
     private Post post(String user, LocalDateTime date, String text) {
-        return new Post(new User(user), date, text);
+        return new Post(new User(user), date, new PostMessage(text));
     }
 }

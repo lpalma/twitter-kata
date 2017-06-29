@@ -37,7 +37,8 @@ public class TimelinePrinter {
     }
 
     private String message(Post post) {
-        return post.message();
+        return post.message()
+                .message();
     }
 
     private String userName(Post post) {

@@ -35,7 +35,7 @@ public class CommandsService {
     }
 
     private Post createPost(User user, PostMessage postMessage) {
-        return new Post(user, clock.now(), postMessage.message());
+        return new Post(user, clock.now(), postMessage);
     }
 
     public void follow(User follower, User following) {

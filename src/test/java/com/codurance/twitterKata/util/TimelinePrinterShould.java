@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.util;
 
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,6 +51,6 @@ public class TimelinePrinterShould {
     }
 
     private Post post(String user, LocalDateTime date, String text) {
-        return new Post(new User(user), date, text);
+        return new Post(new User(user), date, new PostMessage(text));
     }
 }

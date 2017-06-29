@@ -1,6 +1,7 @@
 package com.codurance.twitterKata.repository;
 
 import com.codurance.twitterKata.valueObject.Post;
+import com.codurance.twitterKata.valueObject.PostMessage;
 import com.codurance.twitterKata.valueObject.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class PostRepositoryShould {
 
     @Test
     public void storePosts() {
-        Post post = new Post(alice, LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
+        Post post = dummyPost();
 
         postRepository.add(post);
 
@@ -36,10 +37,14 @@ public class PostRepositoryShould {
 
     @Test
     public void retrievePostsByUser() {
-        Post post = new Post(alice, LocalDateTime.of(2017, 1, 1, 0, 0, 0), "my post");
+        Post post = dummyPost();
 
         postRepository.add(post);
 
         assertThat(postRepository.byUser(alice), equalTo(singletonList(post)));
+    }
+
+    private Post dummyPost() {
+        return new Post(alice, LocalDateTime.of(2017, 1, 1, 0, 0, 0), new PostMessage("my post"));
     }
 }

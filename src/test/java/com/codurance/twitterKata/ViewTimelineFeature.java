@@ -70,9 +70,9 @@ public class ViewTimelineFeature {
 
         User alice = new User("alice");
 
-        commandsService.post(alice, new PostMessage("I love the weather today"));
-        commandsService.post(alice, new PostMessage("Damn! We lost!"));
-        commandsService.post(alice, new PostMessage("Good game though."));
+        commandsService.post(alice, postMessage("I love the weather today"));
+        commandsService.post(alice, postMessage("Damn! We lost!"));
+        commandsService.post(alice, postMessage("Good game though."));
 
         given(console.readLine()).willReturn("alice");
 
@@ -101,10 +101,10 @@ public class ViewTimelineFeature {
         User bob = new User("bob");
         User charlie = new User("charlie");
 
-        commandsService.post(alice, new PostMessage("I love the weather today"));
-        commandsService.post(bob, new PostMessage("Damn! We lost!"));
-        commandsService.post(alice, new PostMessage("Good game though."));
-        commandsService.post(charlie, new PostMessage("Anyone want to have a coffee?"));
+        commandsService.post(alice, postMessage("I love the weather today"));
+        commandsService.post(bob, postMessage("Damn! We lost!"));
+        commandsService.post(alice, postMessage("Good game though."));
+        commandsService.post(charlie, postMessage("Anyone want to have a coffee?"));
 
         given(console.readLine()).willReturn(
                 "charlie follows alice",
@@ -120,5 +120,9 @@ public class ViewTimelineFeature {
         inOrder.verify(console).printLine("alice - Good game though. (1 minute ago)");
         inOrder.verify(console).printLine("bob - Damn! We lost! (2 minutes ago)");
         inOrder.verify(console).printLine("alice - I love the weather today (5 hours ago)");
+    }
+
+    private PostMessage postMessage(String message) {
+        return new PostMessage(message);
     }
 }

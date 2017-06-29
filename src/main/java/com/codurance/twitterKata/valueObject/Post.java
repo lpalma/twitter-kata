@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 public class Post {
     private User userName;
     private LocalDateTime date;
-    private String message;
+    private PostMessage message;
 
-    public Post(User user, LocalDateTime date, String message) {
+    public Post(User user, LocalDateTime date, PostMessage message) {
         this.userName = user;
         this.date = date;
         this.message = message;
@@ -17,7 +17,7 @@ public class Post {
         return userName;
     }
 
-    public String message() {
+    public PostMessage message() {
         return message;
     }
 
